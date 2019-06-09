@@ -1,0 +1,1 @@
+: mem_prime out_is_prime 1 allot dup -rot c! ;

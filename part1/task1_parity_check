@@ -1,0 +1,1 @@
+: parity 2 % if ." the number is not even" cr else ." the number is even" cr then ;

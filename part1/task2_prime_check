@@ -1,0 +1,5 @@
+: rup dup rot ;
+: single_duplicate swap rup swap ;
+: double_duplicate swap rup rup swap ;
+: prime 1 repeat 1 + single_duplicate 2 / 1 + single_duplicate > if double_duplicate % dup 0 = if 1 else 0 then else 1 then until swap drop swap drop ;
+: out_is_prime dup . ." -" prime if ." is prime" else ." is not prime" then cr ;

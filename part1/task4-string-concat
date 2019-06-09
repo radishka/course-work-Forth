@@ -1,0 +1,17 @@
+: str_length ( str -- length ) dup 1 - repeat 1 + dup c@ not until swap -;
+
+: str_copy ( dest src -- dest_end) 
+repeat 
+swap 1 + dup rot 1 + dup ( dest+1 dest+1 src+1 src+1 ) rot 1 - swap 1 - ( dest+1 src+1 dest src )
+c@ dup rot ( dest+1 src+1 char char dest ) c! not
+until
+drop ;
+  
+: concat ( str1 str2 )
+dup rot dup rot ( str2 str1 str1 str2 )
+str_length swap str_length + 1 + ( str1 str2 length )
+dup >r 
+heap-alloc ( str1 str2 addr )
+swap str_copy 1 - ( str1 adddr+str2_length-1 )
+swap str_copy
+r> - ;

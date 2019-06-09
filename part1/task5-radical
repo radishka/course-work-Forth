@@ -1,0 +1,18 @@
+: radical
+dup 1 < if ." Incorrect argument " else
+1 1 >r ( set first index and send result to stack )
+repeat
+1 + ( increase index )
+over over % ( check division )
+0 = if
+dup r> * >r ( increase result )
+repeat
+dup rot swap / swap
+over over % 0 >
+until ( repeat division until number % index != 0)
+then
+over 1 =
+until ( repeat until number nor equals to 1 )
+drop drop
+r>
+then ;
